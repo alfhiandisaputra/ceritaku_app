@@ -70,7 +70,9 @@ export default class AddStoryPage {
                 Klik pada peta untuk menandai lokasi
               </p>
               <div id="map" class="map-container"></div>
+              <label for="lat" class="visually-hidden"></label>
               <input type="hidden" id="lat" name="lat">
+              <label for="lon" class="visually-hidden"></label>
               <input type="hidden" id="lon" name="lon">
             </div>
             
