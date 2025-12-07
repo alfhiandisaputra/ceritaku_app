@@ -20,7 +20,7 @@ class HomePage {
     return `
       <section class="container" id="main-content">
         <div class="welcome-user">
-          <h2 class="welcome-heading">Selamat datang, ${userName || "User"}</h2>
+          <h1 class="welcome-heading">Selamat datang, ${userName || "User"}</h1>
           <p class="welcome-subheading">
             Temukan cerita-cerita menarik dan berbagi pengalaman Anda!
           </p>
@@ -62,11 +62,13 @@ class HomePage {
         <p class="created-at"><i class="fas fa-calendar"></i> ${this.formatDate(
           story.createdAt
         )}</p>
-        ${story.lat && story.lon
-          ? `<div class="mini-map" 
+        ${
+          story.lat && story.lon
+            ? `<div class="mini-map" 
                    data-lat="${story.lat}" 
                    data-lon="${story.lon}"></div>`
-          : ""}
+            : ""
+        }
         <a href="#/story/${story.id}">Lihat Detail</a>
       </div>
     `
@@ -94,8 +96,9 @@ class HomePage {
 
   showLoading() {
     if (!this.storyListContainer) return;
-    
-    this.storyListContainer.innerHTML = '<div class="loading">Loading stories...</div>';
+
+    this.storyListContainer.innerHTML =
+      '<div class="loading">Loading stories...</div>';
   }
 
   formatDate(dateString) {
@@ -112,7 +115,7 @@ class HomePage {
     if (!this.storyListContainer) return;
 
     const mapElements = this.storyListContainer.querySelectorAll(".mini-map");
-    
+
     mapElements.forEach((mapEl) => {
       const lat = parseFloat(mapEl.dataset.lat);
       const lon = parseFloat(mapEl.dataset.lon);
@@ -137,7 +140,7 @@ class HomePage {
 
           miniMap.invalidateSize();
         } catch (error) {
-          console.error('Error initializing map:', error);
+          console.error("Error initializing map:", error);
         }
       }
     });
